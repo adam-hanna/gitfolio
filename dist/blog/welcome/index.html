@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../index.css"></head>
+<body>
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+    <a href="/" class="go_back"><i class="fas fa-arrow-left"></i></a>
+    <div id="background"></div>
+    <table id="profile_blog">
+        <tbody><tr>
+            <td style="width:8vw;"><div id="profile_img_blog"></div></td>
+            <td style="width:52vw;">
+                <div id="username_blog"></div>
+            </td>
+        </tr>
+    </tbody></table>
+    <div id="blog-display">
+        <h1 id="blog_title">Welcome</h1>
+        <h2 id="blog_sub_title">Hello! My name is Adam Hanna. Welcome to my website.</h2>
+        <div id="blog">
+            <p>
+                Hello and welcome to my website! My name is Adam Hanna and I plan to post new content to this site from time to time. I don't don't expect to stick to any one subject or another but rather plan to keep this as a general collection of my ramblings. I tend to be intereted in software development, technology and politics, so I would expect most of my post to be in one of those three categories.
+            <p>
+                If you wish to contact me, the easiest way is via [Twitter](https://twitter.com/adam_m_hanna).
+            </p>
+            <p>
+                My RSA fingerprint: 3D33 EE0E 8620 44EC F7FA 3CA0 2687 062E 2A4E 0E15
+            </p>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJc7EQQAAoJEKOADrzu9nNIQrsP/2ROy08iUzu//z7rp+cXIgWG
+NuL6jtpklTkbkYPJYkrAktWRLOd32bNltch3whv8ISiDHB4Vm0ofifTfFLbh+8B3
+B2qLsvskDmlj/zN+wgmzybVQj0/NI1iatTeV5BP2F1cWP+kQy/JlIDfPCK95rRVH
+PGHi0txn0JUJKrXUFRMePQiscRkWrE4nKC6pGxiS1ymIVP76Cn+v0+8qkr/Nhv8P
+3INv/K3IcIr1Uvxso9Z1mlUNp1soY9jctcU2Ze2ElCkaX3buVhLhoVe3+Bgns6gl
+hzsF2lkoOnw0gLBTUqykPv+NpHTDbKTHZ/zbqc1fDnAsiQdBZbPPiADo+g54ByqT
+LK1QBKqDh8KTBLCorcKJBJ4W8uWZRsXE5q9Xzf5bOvLTc+LgA+SwS0AcEXM+g1QU
+mg84AUtabYvLZmhtm/6zJkAfJPYpIxTpixRgeJKd6QIgMBHFnd7lUfE0nF+RJPnJ
+a7fKhPejTYE+N/xosDZ+a5FPFnOxyeLFChpEiNLOOZeosVcLTm40jWevDP80pTJj
+r9HYoE583Ss2AlEDKfthWl95g6O4gnYGuEjM2hSMWHsrZmQ0BY4UJwtFp6IBXW07
+RcmpEiqw1oBrIxD5WiTJaR+x223U4Q4wMqEOEImyrdz+eFYczne73Fo3aEXvkvdK
+wFvRoZqo81V56gK5I9t6
+=gaIJ
+-----END PGP SIGNATURE-----
+        </div>
+    </div>
+    <div id="footer_blog">
+        <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
+    </div>
+    <script type="text/javascript">
+    setTimeout(function(){
+        document.getElementById("loading").classList.add("animated");
+        document.getElementById("loading").classList.add("fadeOut");
+        setTimeout(function(){
+        document.getElementById("loading").classList.remove("animated");
+        document.getElementById("loading").classList.remove("fadeOut");
+        document.getElementById("loading").style.display = "none";
+        },800);
+    },1500);
+    $.getJSON("../../config.json", function(user){
+        var icon = document.createElement("link");
+        icon.setAttribute("rel", "icon");
+        icon.setAttribute("href", user[0].userimg);
+        icon.setAttribute("type", "image/png");
+        document.getElementsByTagName("head")[0].appendChild(icon);
+        document.getElementById("profile_img_blog").style.background = `url('${user[0].userimg}') center center`;
+        document.getElementById("username_blog").innerHTML = `<spanstyle="display:${user[0].name == null || !user[0].name ? 'none' : 'block'};">${user[0].name}</span><br>@${user[0].username}<b id="blog_time"></b>`;
+    });
+    </script>
+
+</body></html>
